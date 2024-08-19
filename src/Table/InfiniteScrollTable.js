@@ -69,7 +69,9 @@ const InfiniteScrollTable = ({inputValue}) => {
   useEffect(()=>{
     async function getData(){
     console.log("inputValue",inputValue);
-    if(inputValue){
+    setData([]);
+    if(inputValue || data.length == 0){
+      console.log('YESSSS');
           setLoading(true);
     try {
         let url = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:5000/data";
@@ -111,7 +113,7 @@ const InfiniteScrollTable = ({inputValue}) => {
         <TableHead>
           <TableRow>
           {displayColumns.map((column, index) => (
-            <TableCell key={index}>{column}</TableCell>
+            <TableCell style={{fontWeight:"bold"}} key={index}>{column}</TableCell>
           ))}
           </TableRow>
         </TableHead>
